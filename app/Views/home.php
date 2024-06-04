@@ -53,7 +53,7 @@
             <div class="icon">
                 <i class="fas fa-user-plus">ADD</i>
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="/niskeluar" class="small-box-footer">
                 TAMBAH <i class="fas fa-arrow-circle-right"></i>
             </a>
 

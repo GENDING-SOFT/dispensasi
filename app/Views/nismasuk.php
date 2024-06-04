@@ -34,6 +34,7 @@
             gap: 20px;
         }
 
+
         /* button {
             margin-top: 30px;
         } */
@@ -45,15 +46,16 @@
     <?php
     echo view('components/navbar.php')
     ?>
-
-
     <div class="container">
         <form>
+            <h1>IZIN MASUK</h1>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">MASUKAN NIS</label>
+                <label for="nis" class="form-label">MASUKAN NIS</label>
                 <div class="containerDalam">
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="nis">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <form action="/nismasuk/res" method="post">
+                        <input type="number" class="form-control" id="nis" aria-describedby="nis">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
 
