@@ -34,7 +34,7 @@ function Navbar() {
                         </li>
 
                         <li>
-                            <a>Item 3</a>
+                            <Link href="/tambah">TAMBAH</Link>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +48,7 @@ function Navbar() {
                         <Link href="total">TOTAL</Link>
                     </li>
                     <li>
-                        <a>Item 3</a>
+                        <Link href="/tambah">TAMBAH</Link>
                     </li>
                 </ul>
             </div>

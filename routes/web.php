@@ -1,16 +1,16 @@
 <?php
 
+use App\Http\Controllers\DispenController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home');
 });
-Route::get('/total', function () {
-    return Inertia::render('Total');
-});
+Route::get('/total', [DispenController::class, 'total']);
+Route::get("/tambah", [DispenController::class, "tambah"]);
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
