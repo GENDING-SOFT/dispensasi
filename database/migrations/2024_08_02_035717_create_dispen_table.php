@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
@@ -27,7 +28,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('id_guru');
             $table->string('alasan');
             $table->text('deskripsi')->nullable();
-            $table->dateTime('waktu_awal')->default(now());
+            $table->dateTime('waktu_awal')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('waktu_akhir')->nullable();
             $table->boolean('is_sampai_pulang')->default(false);
             $table->foreign('id_guru')->references('id_guru')->on('guru_mst');

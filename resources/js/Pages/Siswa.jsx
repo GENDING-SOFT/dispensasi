@@ -29,7 +29,7 @@ function Siswa() {
     }
     const optionKelas = kelas.map((item) => {
         return {
-            value: item.id_kelas,
+            value: item.nama_kelas,
             label: item.nama_kelas,
         };
     });

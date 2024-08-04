@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->string('id_kelas');
             $table->string('nama_siswa');
             $table->string('no_telepon')->nullable();
-            $table->foreign('id_kelas')->references('id_kelas')->on('kelas_mst');
         });
     }
 

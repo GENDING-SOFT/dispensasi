@@ -15,11 +15,15 @@ class Dispen extends Model
 
     public function guru()
     {
-        return $this->belongsTo(GuruMst::class, 'id_guru', 'id_guru');
+        return $this->belongsTo(Guru::class, 'id_guru', 'id_guru');
     }
 
     public function siswa()
     {
         return $this->belongsToMany(Siswa::class, 'dispen_siswa', 'id_dispen', 'id_siswa');
+    }
+    public function siswaMst()
+    {
+        return $this->belongsTo(Siswa::class, 'nis', 'nis');
     }
 }

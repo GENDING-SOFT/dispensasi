@@ -74,7 +74,7 @@ function Tambah() {
             alasan: alasan,
             deskripsi: deskripsi,
             siswa: siswaPesan,
-            dari: awal,
+            awal: awal,
             akhir: akhir,
             id_guru: guruId,
             is_sampai_pulang: isPulang,
@@ -172,9 +172,10 @@ function Tambah() {
                                 className="w-full"
                             />
                             <label htmlFor="mulai" className="font-bold">
-                                MULAI - [ABAIKAN JIKA MULAI DISPEN SAAT INI ]
+                                MULAI
                             </label>
                             <input
+                                required
                                 type="datetime-local"
                                 onChange={(e) => {
                                     setAwal(e.target.value);
@@ -183,7 +184,7 @@ function Tambah() {
                                 className="input input-bordered w-full "
                             />
                             <label htmlFor="akhir" className="font-bold">
-                                MULAI - [ABAIKAN JIKA DISPEN SAMPAI KBM
+                                AKHIR - [ABAIKAN JIKA DISPEN SAMPAI KBM
                                 BERAKHIR]
                             </label>
                             <input
