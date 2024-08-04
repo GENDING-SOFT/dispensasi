@@ -18,7 +18,7 @@ return new class extends Migration {
     {
         Schema::create('dispen_siswa', function (Blueprint $table) {
             $table->unsignedBigInteger('id_dispen');
-            $table->unsignedBigInteger('id_siswa');
+            $table->integer('id_siswa');
 
             $table->primary(['id_dispen', 'id_siswa']);
             $table->foreign('id_dispen')->references('id_dispen')->on('dispen');

@@ -5,16 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    /**
-     * Run the migrations.
-     */
 
-    //  Table guru_mst {
-    //     id_guru integer [pk]
-    //     nama_guru varchar
-    //     mapel_ajar varchar
-    //     no_whatsapp varchar
-    //   }
     public function up(): void
     {
         Schema::create('guru_mst', function (Blueprint $table) {
@@ -23,13 +14,10 @@ return new class extends Migration {
             $table->string('mapel_ajar');
             $table->string('no_whatsapp');
 
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('guru_mst');

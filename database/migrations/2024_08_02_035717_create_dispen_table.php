@@ -23,13 +23,15 @@ return new class extends Migration {
     {
         Schema::create('dispen', function (Blueprint $table) {
             $table->bigIncrements('id_dispen')->primary();
+            $table->integer("nis");
             $table->unsignedBigInteger('id_guru');
             $table->string('alasan');
             $table->text('deskripsi')->nullable();
-            $table->dateTime('waktu_awal');
+            $table->dateTime('waktu_awal')->default(now());
             $table->dateTime('waktu_akhir')->nullable();
             $table->boolean('is_sampai_pulang')->default(false);
             $table->foreign('id_guru')->references('id_guru')->on('guru_mst');
+            $table->foreign('nis')->references('nis')->on('siswa_mst');
         });
     }
 

@@ -11,9 +11,9 @@ class Kelas extends Model
 
     protected $table = 'kelas_mst';
     protected $primaryKey = 'id_kelas';
-    public $timestamps = true;
+    protected $keyType = 'string';
 
-    protected $fillable = ['nama_kelas'];
+    protected $fillable = ['nama_kelas', 'id_kelas'];
 
     public function siswa()
     {

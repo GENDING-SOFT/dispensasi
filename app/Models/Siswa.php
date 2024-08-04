@@ -10,9 +10,8 @@ class Siswa extends Model
 
     protected $table = 'siswa_mst';
     protected $primaryKey = 'nis';
-    public $timestamps = true;
 
-    protected $fillable = ['id_kelas', 'nama_siswa', 'no_telepon'];
+    protected $fillable = ['id_kelas', 'nama_siswa', "nis"];
 
     public function kelas()
     {

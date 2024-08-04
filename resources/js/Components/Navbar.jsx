@@ -34,7 +34,12 @@ function Navbar() {
                         </li>
 
                         <li>
-                            <Link href="/tambah">TAMBAH</Link>
+                            <Link href="/dispen">TAMBAH</Link>
+                        </li>
+                        <li>
+                            <Link className="text-red-500" href="/tambah">
+                                TAMBAH SISWA
+                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -48,7 +53,12 @@ function Navbar() {
                         <Link href="total">TOTAL</Link>
                     </li>
                     <li>
-                        <Link href="/tambah">TAMBAH</Link>
+                        <Link href="/dispen">TAMBAH</Link>
+                    </li>
+                    <li>
+                        <Link className="text-red-500" href="/siswa">
+                            TAMBAH SISWA
+                        </Link>
                     </li>
                 </ul>
             </div>

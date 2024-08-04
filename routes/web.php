@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\DispenController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -9,7 +12,16 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 Route::get('/total', [DispenController::class, 'total']);
-Route::get("/tambah", [DispenController::class, "tambah"]);
+Route::get("/dispen", [DispenController::class, "tambah"]);
+Route::post("/dispen/store", [DispenController::class, "store"]);
+
+Route::get("/siswa", SiswaController::class);
+Route::post("/siswa/store", [SiswaController::class, "store"]);
+
+Route::get("/siswa/get", [SiswaController::class, "getSiswa"]);
+Route::get("/guru/get", [GuruController::class, 'getAll']);
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

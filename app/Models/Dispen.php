@@ -11,9 +11,7 @@ class Dispen extends Model
 
     protected $table = 'dispen';
     protected $primaryKey = 'id_dispen';
-    public $timestamps = true;
-
-    protected $fillable = ['id_guru', 'alasan', 'deskripsi', 'waktu_awal', 'waktu_akhir', 'is_sampai_pulang'];
+    protected $fillable = ['id_guru', 'nis', 'alasan', 'deskripsi', 'waktu_awal', 'waktu_akhir', 'is_sampai_pulang'];
 
     public function guru()
     {
