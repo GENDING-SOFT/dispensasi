@@ -27,7 +27,7 @@ function Home() {
                             judul="Jumlah Dispensasi Hari Ini"
                         />
                     </div>
-                    <form className="mt-10 flex items-center gap-5">
+                    {/* <form className="mt-10 flex items-center gap-5">
                         <input
                             type="text"
                             placeholder="TANYAKAN SESUATU"
@@ -36,7 +36,7 @@ function Home() {
                         <button className="btn bg-green-400 text-white">
                             CHAT
                         </button>
-                    </form>
+                    </form> */}
                 </div>
             </div>
         </>
