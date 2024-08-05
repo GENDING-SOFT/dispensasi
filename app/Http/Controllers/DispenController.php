@@ -106,6 +106,7 @@ MELAKUKAN DISPENSASI DENGAN ALASAN SEBAGAI BERIKUT: \n
         // Log::info($storeData);
 
         Dispen::insert($storeData);
+        redirect('/dispen');
     }
 
 

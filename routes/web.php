@@ -17,7 +17,7 @@ Route::get("/siswa", SiswaController::class);
 Route::post("/siswa/store", [SiswaController::class, "store"]);
 
 Route::get("/guru", GuruController::class);
-Route::post("/guru/store", [GuruController::class, "store"]);
+Route::post("/guru", [GuruController::class, "store"]);
 
 Route::get("/siswa/get", [SiswaController::class, "getSiswa"]);
 Route::get("/guru/get", [GuruController::class, 'getAll']);
