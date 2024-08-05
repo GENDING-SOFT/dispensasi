@@ -3,11 +3,14 @@ import { router, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 
+import CreatableSelect from "react-select/creatable";
+
 function Tambah() {
     const { props } = usePage();
     const [values, setValues] = useState({
         nis: "",
     });
+    const [isAvailable, setIsAvailable] = useState(true);
     const [guruId, setGuruId] = useState("");
     const [alasan, setAlasan] = useState("");
     const [deskripsi, setDeskripsi] = useState("");
@@ -36,9 +39,17 @@ function Tambah() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const res = await fetch(`/siswa/get?nis=${values.nis}`);
-        const calonDispen = await res.json();
-        setSiswa([...siswa, calonDispen]);
+
+        fetch(`/siswa/get?nis=${values.nis}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setIsAvailable(true);
+                setSiswa([...siswa, data]);
+            })
+            .catch((err) => {
+                setIsAvailable(false);
+                console.log(err);
+            });
     }
 
     useEffect(() => {
@@ -49,8 +60,6 @@ function Tambah() {
 
     const kirim = (e) => {
         e.preventDefault();
-
-        console.log(isPulang);
 
         const siswaPesan = siswa.map((item) => {
             return {
@@ -82,6 +91,7 @@ function Tambah() {
         };
 
         router.post("/dispen/store", dataRequest);
+        window.location.reload();
     };
 
     return (
@@ -97,20 +107,44 @@ function Tambah() {
                             className="flex flex-wrap gap-5"
                             onSubmit={handleSubmit}
                         >
-                            <input
-                                type="number"
-                                placeholder="NIS"
-                                onChange={handleChange}
-                                id="nis"
-                                value={values.nis}
-                                className="input input-bordered w-96 max-w-xs"
-                            />
+                            <div className="flex flex-col gap-5">
+                                <input
+                                    type="number"
+                                    placeholder="NIS"
+                                    onChange={handleChange}
+                                    id="nis"
+                                    value={values.nis}
+                                    className="input input-bordered w-96 max-w-xs"
+                                />
+                                {!isAvailable ? (
+                                    <div className="badge badge-error gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            className="inline-block h-4 w-4 stroke-current"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M6 18L18 6M6 6l12 12"
+                                            ></path>
+                                        </svg>
+                                        NIS TIDAK DITEMUKAN
+                                    </div>
+                                ) : null}
+                            </div>
+
                             <button className="btn px-10">CARI</button>
                         </form>
                     </div>
                     <div className="w-full lg:w-auto lg:flex-1">
-                        {siswa.map((siswa) => (
-                            <div className="px-6 p-5 rounded-lg bg-slate-200 my-5">
+                        {siswa.map((siswa, index) => (
+                            <div
+                                className="px-6 p-5 rounded-lg bg-slate-200 my-5"
+                                key={index}
+                            >
                                 {siswa.nama_siswa}
                             </div>
                         ))}
@@ -137,14 +171,34 @@ function Tambah() {
                                 ALASAN - CONTOH (EKSTRA, ORGANISASI, TUGAS LUAR,
                                 DLL) [WAJIB DIISI]
                             </label>
-                            <input
-                                type="text"
-                                onChange={(e) => {
-                                    setAlasan(e.target.value);
-                                }}
+                            <CreatableSelect
+                                name="alasan"
                                 id="alasan"
+                                onChange={(e) => {
+                                    setGuruId(e.value);
+                                }}
                                 required
-                                className="input input-bordered w-full"
+                                options={[
+                                    { value: "EKSTRA", label: "EKSTRA" },
+                                    {
+                                        value: "ORGANISASI",
+                                        label: "ORGANISASI",
+                                    },
+                                    {
+                                        value: "TUGAS SEKOLAH",
+                                        label: "TUGAS SEKOLAH",
+                                    },
+                                    {
+                                        value: "TUGAS EKSTERNAL",
+                                        label: "TUGAS EKSTERNAL",
+                                    },
+                                    {
+                                        value: "TUGAS LUAR",
+                                        label: "TUGAS LUAR",
+                                    },
+                                ]}
+                                placeholder="GURU"
+                                className="w-full"
                             />
                             <label htmlFor="alasan" className="font-bold">
                                 DESKRIPSI

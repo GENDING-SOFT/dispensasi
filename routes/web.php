@@ -8,7 +8,7 @@ use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 Route::get('/total', [DispenController::class, 'total']);
 Route::get("/dispen", [DispenController::class, "tambah"]);
 Route::post("/dispen/store", [DispenController::class, "store"]);

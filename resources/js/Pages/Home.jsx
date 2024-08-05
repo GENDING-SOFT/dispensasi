@@ -9,7 +9,7 @@ function Home() {
         <>
             <Navbar />
             <div className="flex justify-center items-center">
-                <div className="container">
+                <div className="container p-5">
                     <h1 className="text-3xl font-bold">Home</h1>
                     <Link
                         href="/dispen"
