@@ -90,8 +90,10 @@ function Tambah() {
             data_individu: siswaDispen,
         };
 
+        console.log(dataRequest);
+
         router.post("/dispen/store", dataRequest);
-        window.location.reload();
+        // window.location.reload();
     };
 
     return (
@@ -175,7 +177,7 @@ function Tambah() {
                                 name="alasan"
                                 id="alasan"
                                 onChange={(e) => {
-                                    setGuruId(e.value);
+                                    setAlasan(e.value);
                                 }}
                                 required
                                 options={[
@@ -197,7 +199,7 @@ function Tambah() {
                                         label: "TUGAS LUAR",
                                     },
                                 ]}
-                                placeholder="GURU"
+                                placeholder="ALASAN"
                                 className="w-full"
                             />
                             <label htmlFor="alasan" className="font-bold">

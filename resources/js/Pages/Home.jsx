@@ -2,8 +2,55 @@ import Navbar from "@/Components/Navbar";
 import Stat from "@/Components/Stat";
 import { Link, usePage } from "@inertiajs/react";
 
+import { Line } from "react-chartjs-2";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+} from "chart.js";
+
 function Home() {
     const { props } = usePage();
+
+    console.log(props);
+
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        PointElement,
+        LineElement,
+        Title,
+        Tooltip,
+        Legend
+    );
+
+    const data = {
+        labels: props.label2_minggu,
+        datasets: [
+            {
+                label: "Dispensasi 2 Minggu Terakhir",
+                data: props.data2_minggu,
+                fill: false,
+                backgroundColor: "rgb(75, 192, 192)",
+                borderColor: "rgba(75, 192, 192, 0.2)",
+            },
+        ],
+    };
+
+    const options = {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+
+            responsive: true,
+        },
+    };
 
     return (
         <>
@@ -25,6 +72,14 @@ function Home() {
                         <Stat
                             count={props.hariIniCount}
                             judul="Jumlah Dispensasi Hari Ini"
+                        />
+                    </div>
+                    <div className="w-8/12">
+                        <Line
+                            // className="w-48"
+                            // height={200}
+                            data={data}
+                            options={options}
                         />
                     </div>
                     {/* <form className="mt-10 flex items-center gap-5">
