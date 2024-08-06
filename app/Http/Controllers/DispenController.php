@@ -94,8 +94,8 @@ MELAKUKAN DISPENSASI DENGAN ALASAN SEBAGAI BERIKUT: \n
 
         // fonnte
 
-        // $wa = new WhatsappMessg($nomor_guru, $message);
-        // $wa->send();
+        $wa = new WhatsappMessg($nomor_guru, $message);
+        $wa->send();
 
         $message .= "Terima kasih.";
         Log::info($message);
