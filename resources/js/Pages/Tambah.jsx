@@ -93,7 +93,7 @@ function Tambah() {
         console.log(dataRequest);
 
         router.post("/dispen/store", dataRequest);
-        // window.location.reload();
+        window.location.reload();
     };
 
     return (

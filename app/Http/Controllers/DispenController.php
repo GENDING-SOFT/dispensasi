@@ -99,7 +99,6 @@ MELAKUKAN DISPENSASI DENGAN ALASAN SEBAGAI BERIKUT: \n
 
         $message .= "Terima kasih.";
         Log::info($message);
-        Dispen::insert($storeData);
         // Log::info($storeData);
 
         Dispen::insert($storeData);

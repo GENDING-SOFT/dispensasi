@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+
+
 define('LARAVEL_START', microtime(true));
 
 if (file_exists($maintenance = __DIR__ . '/../storage/framework/maintenance.php')) {

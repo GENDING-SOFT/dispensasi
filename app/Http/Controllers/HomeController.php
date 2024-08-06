@@ -11,6 +11,7 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
+        date_default_timezone_set("Asia/Jakarta");
 
         $dataCount2Minggu = [];
         $label2Minggu = [];
@@ -21,10 +22,9 @@ class HomeController extends Controller
             $dataCount2Minggu[] = $count;
             $label2Minggu[] = date('d M', strtotime($date));
         }
-
-        Log::info($dataCount2Minggu);
-
         $today = date('Y-m-d');
+
+        Log::info($today);
         $dispenCount = Dispen::count();
         $hariIni = Dispen::where('waktu_awal', 'like', '%' . $today . '%')->count();
 
@@ -32,7 +32,8 @@ class HomeController extends Controller
             'dispenCount' => $dispenCount,
             'hariIniCount' => $hariIni,
             "data2_minggu" => array_reverse($dataCount2Minggu),
-            "label2_minggu" => array_reverse($label2Minggu)
+            "label2_minggu" => array_reverse($label2Minggu),
+            "count2minggu" => array_sum($dataCount2Minggu),
         ]);
 
     }
