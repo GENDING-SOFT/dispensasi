@@ -43,7 +43,7 @@ function Home() {
                         >
                             TAMBAH DISPENSASI
                         </Link>
-                        <div className="box w-full flex items-center flex-wrap gap-5 mt-9">
+                        <div className="box w-full flex items-center text-center flex-wrap gap-5 mt-9">
                             <Stat
                                 count={props.dispenCount}
                                 judul="Jumlah Dispensasi"

@@ -17,6 +17,7 @@ Route::get("/siswa", SiswaController::class);
 Route::post("/siswa/store", [SiswaController::class, "store"]);
 
 Route::get("/guru", GuruController::class);
+Route::delete("/guru/{id}", [GuruController::class, 'destroy']);
 Route::post("/guru", [GuruController::class, "store"]);
 
 Route::get("/siswa/get", [SiswaController::class, "getSiswa"]);

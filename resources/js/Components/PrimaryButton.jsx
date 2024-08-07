@@ -1,4 +1,5 @@
-export default function PrimaryButton({ className = '', disabled, children, ...props }) {
+import React from 'react';
+export function PrimaryButton({ className = '', disabled, children, ...props }) {
     return (
         <button
             {...props}
@@ -13,3 +14,16 @@ export default function PrimaryButton({ className = '', disabled, children, ...p
         </button>
     );
 }
+
+
+
+export default function Button({ children, className, onClick, type }) {
+    return (
+        <button type={type} onClick={onClick} className={`font-medium rounded-lg text-sm px-4 py-2 focus:outline-none ${className}`}>
+            {children}
+        </button>
+    );
+}
+
+
+

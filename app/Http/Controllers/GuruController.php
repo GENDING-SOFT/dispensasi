@@ -12,9 +12,9 @@ class GuruController extends Controller
 
     public function __invoke()
     {
-        $guru = Guru::all();
+        $guru = Guru::limit(10)->get();
         return Inertia::render("Guru", [
-            "guru" => $guru,
+            "guru" => $guru
         ]);
     }
 
@@ -35,5 +35,16 @@ class GuruController extends Controller
 
         redirect("/guru");
     }
+
+        public function destroy($id)
+        {
+            try {
+                Guru::findOrFail($id)->delete();
+                return redirect("/guru");
+            } catch (\Illuminate\Database\QueryException $e) {
+                
+                return redirect("/guru");
+            }
+        }
 
 }
