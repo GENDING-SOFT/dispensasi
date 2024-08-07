@@ -13,14 +13,11 @@ export default function Register() {
         password_confirmation: "",
     });
 
-
     const submit = (e) => {
         e.preventDefault();
 
         post(route("register"), {
-            onSuccess: () => {
-                reset();
-            }
+            onFinish: () => reset("password", "password_confirmation"),
         });
     };
 
@@ -76,7 +73,8 @@ export default function Register() {
                         onChange={(e) => setData("password", e.target.value)}
                     />
 
-                    <InputError message={errors.password} className="mt-2" />
+<InputError message={errors.password} className="mt-2" />
+                    
                 </div>
 
                 <div className="mt-4">
@@ -97,7 +95,7 @@ export default function Register() {
                         }
                     />
 
-                    {/* sit sing kie */}
+{/* sit sing kie */}
                     <InputError
                         message={errors.password_confirmation}
                         className="mt-2"

@@ -1,5 +1,5 @@
 import Navbar from "@/Components/Navbar";
-import { router, usePage } from "@inertiajs/react";
+import { Link, router, usePage } from "@inertiajs/react";
 import { useState } from "react";
 
 function Guru() {
@@ -37,19 +37,6 @@ function Guru() {
                         GURU
                     </h1>
 
-                    <div className="flex mb-5">
-                        <button
-                            onClick={() =>
-                                document
-                                    .getElementById("my_modal_4")
-                                    .showModal()
-                            }
-                            href="/guru/create"
-                            className="btn btn-primary"
-                        >
-                            TAMBAH GURU
-                        </button>
-                    </div>
                     <table className="table">
                         <thead>
                             <tr>
@@ -73,7 +60,23 @@ function Guru() {
                 </div>
             </div>
 
-            <dialog id="my_modal_4" className="modal">
+            <button
+                onClick={() =>
+                    document.getElementById("my_modal_2").showModal()
+                }
+                href="/guru/create"
+                className="btn btn-primary"
+            >
+                TAMBAH GURU
+            </button>
+            {/* <button data-modal-target="modal"
+                            href="/guru/create"
+                            className="btn btn-primary"
+                        >
+                            TAMBAH GURU
+                        </button> */}
+
+            <dialog id="my_modal_2" className="modal">
                 <div className="modal-box w-11/12 max-w-5xl">
                     <form
                         className="flex flex-col font-bold w-full gap-2"
@@ -135,6 +138,90 @@ function Guru() {
                     </div>
                 </div>
             </dialog>
+
+            <section className="bg-gray-50 p-3 sm:p-5">
+                <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
+                    <div className="bg-white shadow-md sm:rounded-lg overflow-hidden">
+                        <div className="flex flex-col md:flex-row items-center justify-between p-4 space-y-3 md:space-y-0">
+                            <form className="w-full md:w-1/2">
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <svg
+                                            aria-hidden="true"
+                                            className="w-5 h-5 text-gray-500"
+                                            fill="currentColor"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        id="simple-search"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2"
+                                        placeholder="Search"
+                                        required=""
+                                    />
+                                </div>
+                            </form>
+                            <div className="w-full md:w-auto">
+                                <button
+                                    type="button"
+                                    id="modalButton"
+                                    data-modal-target="modal"
+                                    data-modal-toggle="modal"
+                                    className="w-full flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2 focus:outline-none"
+                                >
+                                    Add teacher
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex justify-center mt-6 mx-4 p-3">
+    <div className="w-full overflow-x-auto">
+        <table className="min-w-full text-sm text-center bg-gray-300">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-200">
+                <tr>
+                    <th className="px-2 py-4">No</th>
+                    <th className="px-4 py-4">Nama</th>
+                    <th className="px-4 py-4">Mapel Ajar</th>
+                    <th className="px-4 py-4">No WhatsApp</th>
+                    <th className="py-4">Aksi</th>
+                </tr>
+            </thead>
+            <tbody className="bg-gray-100">
+                {guru.map((item, index) => (
+                    <tr key={index}>
+                        <td className="px-3 py-4">{index + 1}</td>
+                        <td className="px-3 py-4">{item.nama_guru}</td>
+                        <td className="px-3 py-4">{item.mapel_ajar}</td>
+                        <td className="px-3 py-4">{item.no_whatsapp}</td>
+                        <td className="px-3 py-4 flex justify-center gap-2">
+                            <Link
+                                href="#"
+                                className="font-medium text-white py-2  btn btn-warning hover:bg-yellow-600">
+                                Edit
+                            </Link>
+                            <Link
+                                href="#"
+                                className="font-medium text-white py-2  btn btn-error hover:bg-red-600">
+                                Hapus
+                            </Link>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+            </section>
         </>
     );
 }
